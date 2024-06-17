@@ -1,0 +1,301 @@
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+} 
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.creep {
+    background-color: #e5e5e5;
+    position: relative;
+}
+
+.ontop {
+    width: 100%;
+    z-index: 0;
+}
+
+.fullon {
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    display: flex;
+    background-color: white;
+    left: 0px;
+    z-index: 2;
+}
+
+.titleimg {
+    width: 30%;
+    position: relative;
+    z-index: 5;
+}
+
+.titled {
+    width: 70%;
+    display: flex;
+    position: relative;
+    z-index: 5;
+    flex-direction: column;
+    font-family: Verdana;
+    font-size: 20px;
+    text-align: right;
+    justify-content: right;
+    align-items: end;
+}
+
+.imgport {
+    width: 200px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.formname {
+    margin-right: 30px;
+    margin-top: 40px;
+}
+
+.greenbox {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    position: absolute;
+    background-color: #40d301;
+    top: 55px;
+    right: 0px;
+}
+
+.image {
+    width: 200px;
+    /*height: 25px;*/
+    display: flex;
+    position: relative;
+}
+
+
+.image1 {
+    width: 200px;
+    /*height: 25px;*/
+    display: flex;
+    position: relative;
+}
+
+.warner {
+    width: 350px;
+    height: 30px;
+    display: flex;
+    background-color: white;
+    color: #40d301;
+    margin-top: 50px;
+    right: 0px;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.below {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    position: relative;
+}
+
+.left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    text-align: justify-all;
+}
+
+.date {
+    width: 100%;
+    display: flex;
+    position: relative;
+    margin-top: 10px;
+}
+
+.date1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 10px;
+}
+
+.field1 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.fieldinput {
+    width: 120px;
+    margin: 0px 10px;
+}
+
+.fieldinput {
+    width: 80%;
+    margin: 0px 10px;
+}
+
+
+.fieldinputradio {
+    width: 30%;
+    /*margin: 0px 10px;*/
+}
+
+input {
+    border: none;
+}
+
+.date2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.form1s {
+    width: 95%;
+    display: flex;
+    border: 1px solid grey;
+}
+
+.form2s {
+    width: 40%;
+}
+
+.form2 {
+    width: 60%;
+}
+
+.straight {
+    width: 95%;
+    display: flex;
+    padding-left: 40%;
+}
+
+.straightlabel {
+    font-size: 8px;
+    padding: 0% 12%;
+    justify-content: center;
+    text-align: center;
+}
+
+.sai {
+    width: 100%;
+}
+
+.sai1 {
+    width: 95%;
+}
+
+.saican {
+    width: 100%;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:center;
+    align-content:center;
+}
+
+.saican1 {
+    width: 20%;
+    height: 12%;
+    display: flex;
+    justify-content:center;
+    text-align: center;
+    align-items: center;
+}
+
+.saiLabel {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.saiinput {
+    width: 100%;
+}
+
+
+.saiinput1 {
+    width: 50%;
+}
+
+.omo {
+    display: flex;
+}
+
+.left1 {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border-right: 1px solid #d2d2d2;
+}
+
+.right1 {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border-left: 1px solid #d2d2d2;
+}
+
+.saiimg {
+    height: 80px;
+}
+
+
+.right {
+    flex: 1;
+}
+
+table {
+    padding: 1px;
+}
+
+    table.table-bordered {
+        border: 1px solid black;
+        margin-top: 20px;
+    }
+
+        table.table-bordered > thead > tr > th {
+            border: 1px solid black;
+            padding: 0px;
+        }
+
+        table.table-bordered > tbody > tr > td {
+            border: 1px solid black;
+            padding: 0px;
+        }
+
+thead {
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+.foot1 {
+    width: 100%;
+    padding: 10px;
+}

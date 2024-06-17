@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Upload Countries from Excel";
+}
+
+
+<!-- breadCrumb start -->
+<div class="flex">
+    <div class="flex-1">
+        <div class="text-grey">
+            <span>Contacts</span>
+            <i class="fa-solid fa-caret-right"></i>
+            <span class="text-grey">Persons</span>
+            <i class="fa-solid fa-caret-right"></i>
+            <span class="text-grey">Edit</span>
+        </div>
+    </div>
+
+</div>
+<!-- breadCrumb ends -->
+
+<div class="form-container">
+
+<h2 class="text-large">Upload Countries from Excel</h2>
+
+    <form asp-controller="Countries" asp-action="UploadExcel" method="post" enctype="multipart/form-data">
+        @*ExcelFile*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label pt">Choose an Excel File</label>
+            </div>
+            <div class="flex-1">
+                <input type="file" name="excelFile" class="form-input w-25" />
+                <div class="text-green">@ViewBag.Message</div>
+                <div class="text-red">@ViewBag.ErrorMessage</div>
+            </div>
+        </div>
+
+        <div class="form-field flex">
+            <div class="w-25">
+                <div class="flex-1">
+                    <button type="submit" class="button button-green-back">Upload</button>
+                    <a asp-controller="Persons" asp-action="Index" class="button-link button-blue-back">Back to Person List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

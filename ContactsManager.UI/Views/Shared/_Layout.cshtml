@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html> 
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/StyleSheet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-content">
+
+            <div class="margin-bottom">
+                <div class="flex" id="top-bar-div">
+                    <div class="flex-1" id="app-title-div">
+                        <h1 class="app-title">
+                            @* <i class="fa-solid fa-people-simple"></i> *@
+                            <img src="~/imageIcons/medium/images (3).png" alt="logo" style="height:50px; width:50px;"/>
+                            Contact Manager
+                        </h1>
+                    </div>
+
+
+                    <div class="flex-1 pr" id="search-box-div">
+                        <div class="navbar account-links">
+
+                            <ul>
+                                <li>
+                                    <a asp-controller="Account" asp-action="Register">Register</a>
+                                    <a asp-controller="Account" asp-action="Login">Login</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="navbar mb">
+
+                <ul>
+                    <li>
+                        <a asp-controller="Persons" asp-action="Index">Persons</a>
+                        <a asp-controller="Countries" asp-action="UploadExcel">Upload Countries</a>
+                        <a asp-controller="Persons" asp-action="UploadExcel">Upload Persons</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="body">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
