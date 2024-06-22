@@ -7,7 +7,7 @@ namespace Contact_Manager.Filters.ResultFilters
 
 		public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
 		{
-			context.HttpContext.Response.Cookies.Append("Auth-Key", "A100");
+			context.HttpContext.Response.Cookies.Append("Account-Key", "A100");
 
 			await next();
 

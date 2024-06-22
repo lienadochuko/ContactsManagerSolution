@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html> 
+<html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
@@ -20,7 +20,7 @@
                     <div class="flex-1" id="app-title-div">
                         <h1 class="app-title">
                             @* <i class="fa-solid fa-people-simple"></i> *@
-                            <img src="~/imageIcons/medium/images (3).png" alt="logo" style="height:50px; width:50px;"/>
+                            <img src="~/imageIcons/medium/images (3).png" alt="logo" style="height:50px; width:50px;" />
                             Contact Manager
                         </h1>
                     </div>
@@ -28,13 +28,50 @@
 
                     <div class="flex-1 pr" id="search-box-div">
                         <div class="navbar account-links">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <ul>
+                                    <li>
+                                        <i class="fa-solid fa-user"></i>
+                                        @User.Identity?.Name
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Auth" asp-action="Logout">Logout</a>
+                                    </li>
+                                </ul>
+                            }
+                            else
+                            {
 
-                            <ul>
-                                <li>
-                                    <a asp-controller="Account" asp-action="Register">Register</a>
-                                    <a asp-controller="Account" asp-action="Login">Login</a>
-                                </li>
-                            </ul>
+                                <ul>
+                                    @if (ViewBag.CurrentUrl == "~/Auth/Register")
+                                    {
+                                        <li>
+                                            <a asp-controller="Auth" asp-action="Register" class="nav-active">Register</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a asp-controller="Auth" asp-action="Register">Register</a>
+                                        </li>
+                                    }
+
+                                    @if (ViewBag.CurrentUrl == "~/Auth/Login")
+                                    {
+                                        <li>
+                                            <a asp-controller="Auth" asp-action="Login" class="nav-active">Login</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a asp-controller="Auth" asp-action="Login">Login</a>
+                                        </li>
+
+                                    }
+                                </ul>
+                            }
                         </div>
 
                     </div>
@@ -47,9 +84,32 @@
 
                 <ul>
                     <li>
-                        <a asp-controller="Persons" asp-action="Index">Persons</a>
-                        <a asp-controller="Countries" asp-action="UploadExcel">Upload Countries</a>
-                        <a asp-controller="Persons" asp-action="UploadExcel">Upload Persons</a>
+                        @if (ViewBag.CurrentUrl == "~/Persons/Index")
+                        {
+                            <a asp-controller="Persons" asp-action="Index" class="nav-active">Persons</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Persons" asp-action="Index">Persons</a>
+                        }
+
+                        @if (ViewBag.CurrentUrl == "~/Countries/UploadExcel")
+                        {
+                            <a asp-controller="Countries" asp-action="UploadExcel" class="nav-active">Upload Countries</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Countries" asp-action="UploadExcel">Upload Countries</a>
+                        }
+
+                        @if (ViewBag.CurrentUrl == "~/Persons/UploadExcel")
+                        {
+                            <a asp-controller="Persons" asp-action="UploadExcel" class="nav-active">Upload Persons</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Persons" asp-action="UploadExcel">Upload Persons</a>
+                        }
                     </li>
                 </ul>
             </div>

@@ -7,13 +7,13 @@ namespace Contact_Manager.Filters.Authorization_Filter
 	{
 		public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
 		{
-			if(context.HttpContext.Request.Cookies.ContainsKey("Auth-Key") == false)
+			if(context.HttpContext.Request.Cookies.ContainsKey("Account-Key") == false)
 			{
 				context.Result = new StatusCodeResult(StatusCodes.Status401Unauthorized);
 
 				return;
 			}
-			if(context.HttpContext.Request.Cookies["Auth-Key"] != "A100")
+			if(context.HttpContext.Request.Cookies["Account-Key"] != "A100")
 			{
 				context.Result = new StatusCodeResult(StatusCodes.Status401Unauthorized);
 

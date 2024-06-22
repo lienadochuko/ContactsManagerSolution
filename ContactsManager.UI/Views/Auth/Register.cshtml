@@ -1,0 +1,140 @@
+﻿@model RegisterDTO
+@{
+    ViewBag.Title = "Register";
+    ViewBag.CurrentUrl = "~/Auth/Register";
+}
+
+<div class="text-grey">
+    <span>Contacts</span>
+    <i class="fa-solid fa-caret-right"></i>
+    <span>Register</span>
+</div>
+
+<div class="form-container">
+    Already Registered? <a asp-action="Login" asp-controller="Auth" class="link-hover">Login</a>
+    <h2 class="text-large">Register</h2>
+
+    <form asp-controller="Auth" asp-action="Register" method="post" id="Registerform">
+
+        @*PersonName*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="PersonName" class="form-label pt">Name</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="PersonName" class="form-input" />
+                <span asp-validation-for="PersonName" class="text-red"></span>
+            </div>
+        </div>
+
+        @*Email*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Email" class="form-label pt">Email</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Email" class="form-input" />
+                <span asp-validation-for="Email" class="text-red"></span>
+            </div>
+        </div>
+
+        @*Password*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Password" class="form-label pt">Password</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Password" class="form-input" />
+                <span asp-validation-for="Password" class="text-red"></span>
+            </div>
+        </div>
+
+        @*ConfirmPassword*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="ConfirmPassword" class="form-label pt">Confirm Password</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="ConfirmPassword" class="form-input" />
+                <span asp-validation-for="ConfirmPassword" class="text-red"></span>
+            </div>
+        </div>
+
+        @*PhoneNumber*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="PhoneNumber" class="form-label pt">PhoneNumber</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="PhoneNumber" class="form-input" />
+                <span asp-validation-for="PhoneNumber" class="text-red"></span>
+            </div>
+        </div>
+
+
+        @*Register button*@
+        <div class="form-field flex">
+            <div class="w-25"></div>
+            <div class="flex-1">
+                <button class="button button-green-back" type="submit">Register</button>
+
+                @* <div asp-validation-summary="All" class="text-red"></div> *@
+
+                @* @if (ViewBag.Errors != null)
+                {
+                    <div class="text-red ml">
+                        <ul>
+                            @foreach (string error in ViewBag.Errors)
+                            {
+                                <li class="ml">@error</li>
+                            }
+                        </ul>
+                    </div>
+                } *@
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript" asp-append-version="true">
+	$(document).ready(function () {
+
+		$("#Registerform").validate({
+            rules: {
+                PersonName: "required",
+                Email: {
+                    required: true,
+                    email: true
+                },
+                Password: {
+                    required: true,
+                },
+                ConfirmPassword: {
+                    required: true,
+                    equalTo: "#Password"
+                },
+                PhoneNumber: {
+                    required: true,
+                    digits: true,
+                    minlength: 11,
+                    maxlength: 11
+                }
+            }
+		});
+
+		$('#Registerform').on('submit', function (event) {
+			event.preventDefault();
+			if ($("#Registerform").valid()) {
+				this.submit();
+			}
+		});
+
+	});
+
+</script>
+
+

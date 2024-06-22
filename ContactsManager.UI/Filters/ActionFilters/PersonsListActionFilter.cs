@@ -45,7 +45,7 @@ namespace Contact_Manager.Filters.ActionFilters
 
                 if (parameters.ContainsKey("sortOrderOptions"))
                 {
-                    personsController.ViewData["CurrentSortOrderOptions"] = Convert.ToString(parameters["sortBy"]);
+                    personsController.ViewData["CurrentSortOrderOptions"] = Convert.ToString(parameters["sortOrderOptions"]);
                 }
                 else
                 {

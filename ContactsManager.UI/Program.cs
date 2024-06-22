@@ -36,8 +36,12 @@ Rotativa.AspNetCore.RotativaConfiguration.Setup("wwwroot", wkhtmltopdfRelativePa
 
 app.UseHttpLogging();
 app.UseStaticFiles();
-app.UseRouting();
-app.MapControllers();
+
+app.UseAuthentication();//Reading Identity cookie
+app.UseRouting();//Identifying action method based route
+app.MapControllers();//Execute the filter pipeline (action + filters)
 app.UseRotativa();
 
 app.Run();
+
+public partial class Program { } //make the auto-generated Program accessible programmatically

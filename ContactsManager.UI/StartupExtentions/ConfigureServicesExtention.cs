@@ -1,9 +1,12 @@
 ﻿using Contact_Manager.Filters.ActionFilters;
+using ContactsManager.Core.Domain.IdentityEntities;
 using ContactsManager.Core.Domain.RepositoryContracts;
 using ContactsManager.Core.ServiceContracts;
 using ContactsManager.Core.Services;
 using ContactsManager.Infastructure;
 using ContactsManager.Infastructure.Repositories;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contact_Manager
@@ -39,6 +42,27 @@ namespace Contact_Manager
 					options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
 				}
 			);
+
+			//Enable Identity in this project
+			services.AddIdentity<ApplicationUser,ApplicationRole>( options =>
+				{
+					//options.SignIn.RequireConfirmedEmail = true;
+					options.Password.RequiredLength = 8;
+					options.Password.RequireNonAlphanumeric = true;
+					options.Password.RequireUppercase = true;
+					options.Password.RequireLowercase = true;
+					options.Password.RequireDigit = true;
+					options.Password.RequiredUniqueChars = 3; //Eg: AB12AB (unique characters are A,B,1,2)
+					options.Lockout.AllowedForNewUsers = true;  // Enable lockout for new users
+					options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);  // Set lockout duration to 10 minutes
+					options.Lockout.MaxFailedAccessAttempts = 10;  // Allow 3 failed attempts before lockout
+				}
+
+				)
+				.AddEntityFrameworkStores<ApplicationDbContext>()
+				.AddDefaultTokenProviders()
+				.AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
+				.AddRoleStore<RoleStore<ApplicationRole, ApplicationDbContext, Guid>>();
 
 			services.AddHttpLogging(options =>
 			{
