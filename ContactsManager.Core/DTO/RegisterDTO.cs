@@ -13,8 +13,9 @@ namespace ContactsManager.Core.DTO
 		public string PersonName { get; set; }
 
 		[Required(ErrorMessage = "Please input your email")]
-		[EmailAddress]
-		public string Email { get; set; }
+		[EmailAddress(ErrorMessage = "Email should be a proper Email")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
 
 		[Required(ErrorMessage = "Please input your PhoneNumber")]
 		[StringLength(11, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 11)]

@@ -57,5 +57,19 @@ namespace ContactsManager.UI.Controllers
             return View(registerDTO);
 
         }
+
+
+        [Route("[action]")]
+        public async Task<IActionResult> Login()
+        {
+            return View();
+        }
+
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginDTO loginDTO)
+        {
+            return View();
+        }
     }
 }
