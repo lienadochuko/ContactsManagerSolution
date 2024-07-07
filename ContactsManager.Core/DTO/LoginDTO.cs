@@ -15,6 +15,7 @@ namespace ContactsManager.Core.DTO
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please input your password")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
     }
