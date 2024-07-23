@@ -71,6 +71,33 @@
             </div>
         </div>
 
+        @*UserType*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="UserType" class="form-label pt">User Type</label>
+            </div>
+            <div class="flex-1 flex">
+               @*  <select asp-for="UserType" class="form-input">
+                    <option value="">Please Select</option>
+                </select> *@
+                <div>
+                <input type="radio" id="User" value="User" asp-for="UserType" class="form-input" checked/>
+                <label for="User">User</label>
+                </div>
+
+                <div>
+                <input type="radio" id="Admin" value="Admin" asp-for="UserType" class="form-input" />
+                <label for="Admin">Admin</label>
+                </div>
+
+                <div>
+                <input type="radio" id="Developer" value="Developer" asp-for="UserType" class="form-input" />
+                <label for="Developer">Developer</label>
+                </div>
+                <span asp-validation-for="UserType" class="text-red"></span>
+            </div>
+        </div>
+
 
         @*Register button*@
         <div class="form-field flex">
@@ -78,7 +105,7 @@
             <div class="flex-1">
                 <button class="button button-green-back" type="submit">Register</button>
 
-                @* <div asp-validation-summary="All" class="text-red"></div> *@
+                <div asp-validation-summary="All" class="text-red"></div>
 
                 @* @if (ViewBag.Errors != null)
                 {

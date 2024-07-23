@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ContactsManager.Core.Enums;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,7 +16,7 @@ namespace ContactsManager.Core.DTO
 
 		[Required(ErrorMessage = "Please input your email")]
 		[EmailAddress(ErrorMessage = "Email should be a proper Email")]
-        [DataType(DataType.EmailAddress)]
+		[Remote(action: "IsEmailAlreadyRegistered", controller:"auth", ErrorMessage = "This email is already registered")]
         public string Email { get; set; }
 
 		[Required(ErrorMessage = "Please input your PhoneNumber")]
@@ -30,5 +32,7 @@ namespace ContactsManager.Core.DTO
         [MinLength(8, ErrorMessage = "Your password must be at least 8 characters long")]
         [Compare("Password", ErrorMessage = "Passwords do not match")]
 		public string ConfirmPassword { get; set; }
+
+		public UserTypeOptions UserType { get; set; } = UserTypeOptions.User;
 	}
 }

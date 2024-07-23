@@ -41,6 +41,19 @@ app.UseRouting();//Identifying action method based route
 app.UseAuthentication();//Reading Identity cookie
 app.UseAuthorization(); //evaluation access permission of the current user
 app.MapControllers();//Execute the filter pipeline (action + filters)
+app.MapControllers();
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller}/{action}/{id?}");
+    //admin/home/Index
+
+
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller}/{action}/{id?}");
+
 app.UseRotativa();
 
 app.Run();

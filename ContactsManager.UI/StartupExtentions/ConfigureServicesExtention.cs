@@ -67,6 +67,15 @@ namespace Contact_Manager
 				options.FallbackPolicy = new AuthorizationPolicyBuilder()
 				.RequireAuthenticatedUser().Build();
 				//enforces authorization policy (user must be authenticated) for all action methods
+
+				//Custom Policy
+				options.AddPolicy("NotAuthenticated", policy =>
+				{
+					policy.RequireAssertion(context =>
+					{
+						return !context.User.Identity.IsAuthenticated;
+					});
+				}); 
 			});
 
 			services.ConfigureApplicationCookie(option =>
