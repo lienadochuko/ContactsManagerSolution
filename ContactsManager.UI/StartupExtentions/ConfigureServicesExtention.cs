@@ -69,7 +69,7 @@ namespace Contact_Manager
 				//enforces authorization policy (user must be authenticated) for all action methods
 
 				//Custom Policy
-				options.AddPolicy("NotAuthenticated", policy =>
+				options.AddPolicy("NotAuthorized", policy =>
 				{
 					policy.RequireAssertion(context =>
 					{

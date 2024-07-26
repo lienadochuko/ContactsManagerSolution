@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 namespace ContactsManager.UI.Controllers
 {
 	[Route("[controller]")]
-	[AllowAnonymous]
+	//[AllowAnonymous]
 	public class AuthController(
 		UserManager<ApplicationUser> _userManager,
 		ILogger<AuthController> logger,
@@ -18,13 +18,15 @@ namespace ContactsManager.UI.Controllers
 		SignInManager<ApplicationUser> _signInManager) : Controller
 	{
 		[Route("[action]")]
-		public async Task<IActionResult> Register()
+        [Authorize("NotAuthorized")]
+        public async Task<IActionResult> Register()
 		{
 			return View();
 		}
 
 		[Route("[action]")]
-		[HttpPost]
+        [Authorize("NotAuthorized")]
+        [HttpPost]
 		public async Task<IActionResult> Register(RegisterDTO registerDTO)
 		{
 			if (ModelState.IsValid == false)
@@ -111,13 +113,14 @@ namespace ContactsManager.UI.Controllers
 
 
 		[Route("[action]")]
-        [Authorize(Policy = "NotAuthenticated")]
+        [Authorize("NotAuthorized")]
         public async Task<IActionResult> Login()
 		{
 			return View();
 		}
 
 		[Route("[action]")]
+        [Authorize("NotAuthorized")]
 		[HttpPost]
 		public async Task<IActionResult> Login(LoginDTO loginDTO, string? ReturnUrl)
 		{

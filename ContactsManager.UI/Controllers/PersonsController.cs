@@ -8,6 +8,7 @@ using Contact_Manager.Filters.ResultFilters;
 using ContactsManager.Core.DTO;
 using ContactsManager.Core.Enums;
 using ContactsManager.Core.ServiceContracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OfficeOpenXml.FormulaParsing.LexicalAnalysis;
@@ -17,6 +18,7 @@ using Rotativa.AspNetCore;
 namespace Contact_Manager.Controllers
 {
     [Route("[controller]")]
+    [Authorize(Roles = "User, Admin, Developer")]
     //[TypeFilter(typeof(ResponseHeaderActionFilter), Arguments = new object[] { "My-From-Controller-Key", "My-From-Controller-Value", 1 })]
     [TypeFilter(typeof(PersonsAlwaysRunResultFilter))]
     [TypeFilter(typeof(HandleExceptionFilter))]
