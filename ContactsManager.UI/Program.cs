@@ -34,6 +34,8 @@ Rotativa.AspNetCore.RotativaConfiguration.Setup("wwwroot", wkhtmltopdfRelativePa
 //Rotativa.AspNetCore.RotativaConfiguration.Setup(builder.Environment.WebRootPath, "Rotativa");
 //RotativaConfiguration.Setup(builder.Environment.WebRootPath, "Rotativa");
 
+app.UseHsts();
+app.UseHttpsRedirection();
 app.UseHttpLogging();
 app.UseStaticFiles();
 
