@@ -34,16 +34,21 @@ Rotativa.AspNetCore.RotativaConfiguration.Setup("wwwroot", wkhtmltopdfRelativePa
 //Rotativa.AspNetCore.RotativaConfiguration.Setup(builder.Environment.WebRootPath, "Rotativa");
 //RotativaConfiguration.Setup(builder.Environment.WebRootPath, "Rotativa");
 
+
+//Enabling Https
 app.UseHsts();
 app.UseHttpsRedirection();
+
+//Logging
 app.UseHttpLogging();
+
+//using wwwroot folder
 app.UseStaticFiles();
 
 app.UseRouting();//Identifying action method based route
 app.UseAuthentication();//Reading Identity cookie
 app.UseAuthorization(); //evaluation access permission of the current user
 app.MapControllers();//Execute the filter pipeline (action + filters)
-app.MapControllers();
 
 app.MapControllerRoute(
     name: "areas",

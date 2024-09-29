@@ -26,6 +26,7 @@ namespace ContactsManager.UI.Controllers
 
 		[Route("[action]")]
         [Authorize("NotAuthorized")]
+		[ValidateAntiForgeryToken]
         [HttpPost]
 		public async Task<IActionResult> Register(RegisterDTO registerDTO)
 		{
@@ -166,8 +167,10 @@ namespace ContactsManager.UI.Controllers
 			return RedirectToAction(nameof(PersonsController.Index), "Persons");
 		}
 
-		[Route("[action]")]
-		public async Task<IActionResult> IsEmailAlreadyRegistered(string email)
+        [Route("[action]")]
+        [AcceptVerbs("Get", "Post")]
+        [Authorize("NotAuthorized")]
+        public async Task<IActionResult> IsEmailAlreadyRegistered(string email)
 	{
 			ApplicationUser user = await _userManager.FindByEmailAsync(email);
 			if (user == null)

@@ -16,7 +16,7 @@ namespace ContactsManager.Core.DTO
 
 		[Required(ErrorMessage = "Please input your email")]
 		[EmailAddress(ErrorMessage = "Email should be a proper Email")]
-		[Remote(action: "IsEmailAlreadyRegistered", controller:"auth", ErrorMessage = "This email is already registered")]
+		[Remote(action: "IsEmailAlreadyRegistered", controller:"Auth", ErrorMessage = "This email is already registered")]
         public string Email { get; set; }
 
 		[Required(ErrorMessage = "Please input your PhoneNumber")]
