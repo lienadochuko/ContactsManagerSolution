@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsManager.UI", "ContactsManager.UI\ContactsManager.UI.csproj", "{CE593904-CBCC-4B40-9F0A-AC97944FD1A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsManager.Core", "ContactsManager.Core\ContactsManager.Core.csproj", "{8E35F741-A9C0-4822-BB00-4D339A034ECA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsManager.Core", "ContactsManager.Core\ContactsManager.Core.csproj", "{8E35F741-A9C0-4822-BB00-4D339A034ECA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsManager.Infastructure", "ContactsManager.Infastructure\ContactsManager.Infastructure.csproj", "{A172A5CB-B53B-45B3-A7CF-1F1C7A1883FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContactsManager.Infastructure", "ContactsManager.Infastructure\ContactsManager.Infastructure.csproj", "{A172A5CB-B53B-45B3-A7CF-1F1C7A1883FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CE593904-CBCC-4B40-9F0A-AC97944FD1A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE593904-CBCC-4B40-9F0A-AC97944FD1A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE593904-CBCC-4B40-9F0A-AC97944FD1A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE593904-CBCC-4B40-9F0A-AC97944FD1A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E35F741-A9C0-4822-BB00-4D339A034ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E35F741-A9C0-4822-BB00-4D339A034ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E35F741-A9C0-4822-BB00-4D339A034ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
