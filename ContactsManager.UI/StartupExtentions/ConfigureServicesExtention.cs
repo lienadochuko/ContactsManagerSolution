@@ -5,9 +5,11 @@ using ContactsManager.Core.ServiceContracts;
 using ContactsManager.Core.Services;
 using ContactsManager.Infastructure;
 using ContactsManager.Infastructure.Repositories;
+using ContactsManager.Infastructure.Repositories.DataAccess;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contact_Manager
@@ -22,6 +24,7 @@ namespace Contact_Manager
 				var logger = services.BuildServiceProvider().GetRequiredService<ILogger<ResponseHeaderActionFilter>>();
 
 				//options.Filters.Add(new ResponseHeaderActionFilter("My-Key-From-Global", "My-Value-From-Global", 3));
+				options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
 			});
 
 			//add services into IoC container
@@ -34,6 +37,9 @@ namespace Contact_Manager
 			services.AddScoped<IPersonSorterServices, PersonSorterService>();
 			services.AddScoped<ICountriesRepository, CountriesRepository>();
 			services.AddScoped<IPersonRepository, PersonsRepository>();
+			services.AddScoped<IDataRepository, DataRepository>();
+			services.AddScoped<IMoviesRepository, MoviesRepository>();
+			services.AddScoped<IMoviesService, MoviesService>();
 
 
 			services.AddDbContext<ApplicationDbContext>
