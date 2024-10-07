@@ -53,6 +53,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
 
@@ -96,17 +97,11 @@
     <None Include="wwwroot\js\chart.morris.js" />
     <None Include="wwwroot\js\chart.peity.js" />
     <None Include="wwwroot\js\chart.sparkline.js" />
-    <None Include="wwwroot\js\chat.js" />
-    <None Include="wwwroot\js\check-all-mail.js" />
     <None Include="wwwroot\js\checkout-jquery-steps.js" />
-    <None Include="wwwroot\js\circle-progress.min.js" />
-    <None Include="wwwroot\js\colorpicker.js" />
     <None Include="wwwroot\js\contact.js" />
     <None Include="wwwroot\js\cookie.js" />
-    <None Include="wwwroot\js\createWaterBall-jquery.js" />
     <None Include="wwwroot\js\custom.js" />
     <None Include="wwwroot\js\custom1.js" />
-    <None Include="wwwroot\js\dashboard.sampledata.js" />
     <None Include="wwwroot\js\echarts.js" />
     <None Include="wwwroot\js\edit-datatable.js" />
     <None Include="wwwroot\js\eva-icons.min.js" />
@@ -119,23 +114,15 @@
     <None Include="wwwroot\js\formelementadvnced.js" />
     <None Include="wwwroot\js\fullcalendar.js" />
     <None Include="wwwroot\js\gallery.js" />
-    <None Include="wwwroot\js\generate-otp.js" />
     <None Include="wwwroot\js\handleCounter.js" />
     <None Include="wwwroot\js\image-comparision.js" />
     <None Include="wwwroot\js\index-dark.js" />
     <None Include="wwwroot\js\index-map.js" />
     <None Include="wwwroot\js\index.js" />
-    <None Include="wwwroot\js\index1.js" />
-    <None Include="wwwroot\js\index2.js" />
     <None Include="wwwroot\js\invoice.js" />
     <None Include="wwwroot\js\jquery.vmap.sampledata.js" />
     <None Include="wwwroot\js\left-menu.js" />
     <None Include="wwwroot\js\mail-two.js" />
-    <None Include="wwwroot\js\map-leafleft.js" />
-    <None Include="wwwroot\js\map.apple.js" />
-    <None Include="wwwroot\js\map.bluewater.js" />
-    <None Include="wwwroot\js\map.mapbox.js" />
-    <None Include="wwwroot\js\map.shiftworker.js" />
     <None Include="wwwroot\js\modal-popup.js" />
     <None Include="wwwroot\js\modal.js" />
     <None Include="wwwroot\js\navigation.js" />
@@ -143,9 +130,7 @@
     <None Include="wwwroot\js\owl.carousel.js" />
     <None Include="wwwroot\js\popover.js" />
     <None Include="wwwroot\js\profile.js" />
-    <None Include="wwwroot\js\rangeslider.js" />
     <None Include="wwwroot\js\select2.js" />
-    <None Include="wwwroot\js\sidemenu.js" />
     <None Include="wwwroot\js\sticky.js" />
     <None Include="wwwroot\js\summernote.js" />
     <None Include="wwwroot\js\sweet-alert.js" />
