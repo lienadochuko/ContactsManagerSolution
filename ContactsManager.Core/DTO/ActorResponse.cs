@@ -62,21 +62,19 @@ namespace ContactsManager.Core.DTO
         }
 
 
-        //public PersonUpdateRequest ToPersonUpdateRequest()
-        //{
-        //    return new PersonUpdateRequest()
-        //    {
-        //        PersonID = PersonID,
-        //        PersonName = PersonName,
-        //        Email = Email,
-        //        DOB = DOB,
-        //        Gender = (GenderOptions)Enum.Parse(typeof(GenderOptions), Gender, true),
-        //        NIN = NIN,
-        //        Address = Address,
-        //        CountryID = CountryID,
-        //        RecieveNewsLetter = RecieveNewsLetter,
-        //    };
-        //}
+        public ActorsUpdateRequest ToActorsUpdateRequest()
+        {
+            return new ActorsUpdateRequest()
+            {
+                ActorID = ActorID,
+                FirstName = FirstName,
+                FamilyName = FamilyName,
+                FullName = FullName,
+                DOB = DOB,
+                DOD = DOD,
+                Gender = Gender
+            };
+        }
 
     }
     public static class ActorsExtension

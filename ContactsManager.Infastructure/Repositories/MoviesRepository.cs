@@ -14,7 +14,7 @@ namespace ContactsManager.Infastructure.Repositories
 {
     public class MoviesRepository(IDataRepository dataRepository, IConfiguration configuration) : IMoviesRepository
     {
-        public async Task<IEnumerable<ActorsDto>> GetActors(CancellationToken cancellationToken)
+        public async Task<IEnumerable<ActorsDto>> GetAllActors(CancellationToken cancellationToken)
         {
             return await dataRepository.GetListOfActors("dbo.GetAllActors", CustomHelpers.GetConnectionString(configuration, "SecondConnection"), null, reader =>
             {
@@ -29,6 +29,10 @@ namespace ContactsManager.Infastructure.Repositories
                     Gender = CustomHelpers.GetSafeString(reader, 6)
                 };
             }, cancellationToken);
+        }
+        public async Task<ActorsDto> GetActors(string id, CancellationToken cancellationToken)
+        {
+            return await dataRepository.GetSearchedActors(id, "dbo.GetSearchedActor", CustomHelpers.GetConnectionString(configuration, "SecondConnection"), cancellationToken);
         }
     }
 

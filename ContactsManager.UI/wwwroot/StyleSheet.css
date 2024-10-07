@@ -71,6 +71,7 @@ body {
 
 .nav-active {
     position: relative;
+    font-weight:200;
 }
 
 .card-container {
@@ -451,10 +452,12 @@ a.button-link:link, a.button-link:visited {
 }
 
 .button {
+    width:50%;
+    float:right;
     padding: 8px 12px;
     border: 2px solid #cacaca;
     border-radius: 8px;
-    font-size: 101%;
+    font-size: 1.4em;
 }
 
 .button-blue-back {
@@ -638,10 +641,6 @@ a.button-link:link, a.button-link:visited {
 }
 
 @media screen and (min-width: 1000px) {
-    #top-bar-div {
-        flex-direction: row;
-    }
-
     #search-box-div {
         padding-top: 0px;
         text-align: right;
@@ -710,4 +709,24 @@ a.button-link:link, a.button-link:visited {
     .account-links {
         display: inline-block;
     }
+}
+
+
+@media screen and (min-width: 512px) {
+    #top-bar-div {
+        flex-direction: row;
+    }
+}
+
+.lighttext {
+    font-family: 'Script MT', sans-serif;
+    font-size: 1.81568rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.lighttext1 {
+    font-family: 'Script MT', sans-serif;
+    font-size: 1.11568rem;
+    font-weight: 300;
 }

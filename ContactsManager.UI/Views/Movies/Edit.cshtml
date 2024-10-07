@@ -1,0 +1,120 @@
+﻿@model ActorsUpdateRequest
+@{
+    ViewBag.CurrentUrl = "~/Movies/Edit";
+    ViewBag.Title = "Edit Actor";
+}
+
+<!-- breadCrumb start -->
+<div class="flex">
+    <div class="flex-1">
+        <div class="text-grey">
+            <span>Contacts</span>
+            <i class="fa-solid fa-caret-right"></i>
+            <span class="text-grey">Actor</span>
+            <i class="fa-solid fa-caret-right"></i>
+            <span class="text-grey">Edit</span>
+        </div>
+    </div>
+
+</div>
+<!-- breadCrumb ends -->
+
+<div class="form-container">
+    <a asp-controller="Movies" asp-action="Index" class="button-link button-blue-back">Back to Actors List</a>
+    <h2>Edit Actor</h2>
+
+    <form asp-controller="Person" asp-action="Edit" method="post">
+        @*PersonID*@
+        <input type="hidden" asp-for="ActorID" />
+
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="FirstName" class="form-label pt">FirstName</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="FirstName" class="form-input" />
+                <span asp-validation-for="FirstName" class="text-red"></span>
+            </div>
+        </div>
+        
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="FamilyName" class="form-label pt">FamilyName</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="FamilyName" class="form-input" />
+                <span asp-validation-for="FamilyName" class="text-red"></span>
+            </div>
+        </div>
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="FullName" class="form-label pt">FullName</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="FullName" class="form-input" />
+                <span asp-validation-for="FullName" class="text-red"></span>
+            </div>
+        </div>
+
+        @*DOB*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="DOB" class="form-label pt">Date of Birth</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="DOB" class="form-input" />
+                <span asp-validation-for="DOB" class="text-red"></span>
+            </div>
+        </div>
+
+        @*DOD*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="DOD" class="form-label pt">Date of Death</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="DOD" class="form-input" />
+                <span asp-validation-for="DOD" class="text-red"></span>
+            </div>
+        </div>
+
+        @*Gender*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label for="Gender" class="form-label pt">Gender</label>
+            </div>
+            <div class="flex-1">
+                @{
+                    string[] genders = (string[])Enum.GetNames(typeof(GenderOptions));
+                }
+                @foreach (string gender in genders)
+                {
+                    <input type="radio" asp-for="Gender" value="@gender" />
+                    <label for="@gender" class="form-label pt">@gender</label>
+                }
+                <span asp-validation-for="Gender" class="text-red"></span>
+            </div>
+        </div>
+
+        @*Submit*@
+        <div class="form-field flex">
+            <div class="w-25">
+            </div>
+            <div class="flex-1">
+                <button class="button button-green-back">Update</button>
+                <div asp-validation-summary="All" class="text-red"></div>
+                @if (ViewBag.Errors != null)
+                {
+                    <div class="text-red ml">
+                        <ul>
+                            @foreach (string error in ViewBag.Errors)
+                            {
+                                <li class="ml">@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </form>
+</div>

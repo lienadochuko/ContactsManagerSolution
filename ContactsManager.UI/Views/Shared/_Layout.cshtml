@@ -10,35 +10,41 @@
     <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
 
-    <link rel="stylesheet" asp-append-version="true" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" asp-append-version="true" type="text/css" />
-    <link rel="stylesheet" asp-append-version="true" href="~/css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" asp-append-version="true" href="~/css/style.css" type="text/css" />
-    <link rel="stylesheet" asp-append-version="true" href="~/css/dark.css" type="text/css" />
-    <link rel="stylesheet" asp-append-version="true" href="~/css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" asp-append-version="true" href="~/css/animate.css" type="text/css" />
-    <link rel="stylesheet" asp-append-version="true" href="~/css/magnific-popup.css" type="text/css" />
 
-    <!-- Bootstrap Data Table Plugin -->
-    <link rel="stylesheet" asp-append-version="true" href="~/css/components/bs-datatable.css" type="text/css" />
+    <!-- Icons css -->
+    <link href="~/css/icons.css" rel="stylesheet">
 
-    <!-- Bootstrap File Upload CSS -->
-    <link rel="stylesheet" href="~/css/components/bs-filestyle.css" type="text/css" />
+    <!--  bootstrap css-->
+    <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
+    <!-- Data table css -->
+    <link href="~/plugins/datatable/css/dataTables.bootstrap5.css" rel="stylesheet" />
+    <link href="~/plugins/datatable/css/buttons.bootstrap5.min.css" rel="stylesheet">
+    <link href="~/plugins/datatable/responsive.bootstrap5.css" rel="stylesheet" />
 
-    <link rel="stylesheet" asp-append-version="true" href="~/css/responsive.css" type="text/css" />
-    <link rel="stylesheet" asp-append-version="true" href="~/css/add-on.css" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!--- Style css --->
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/style-dark.css" rel="stylesheet">
+    <link href="~/css/style-transparent.css" rel="stylesheet">
+
+    <!-- INTERNAL Select2 css -->
+    <link href="~/plugins/select2/css/select2.min.css" rel="stylesheet" />
+
+    <!---Skinmodes css-->
+    <link href="~/css/skin-modes.css" rel="stylesheet" />
+
+    <!--- Animations css-->
+    <link href="~/css/animate.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <div class="page-content">
 
-            <div class="margin-bottom">
-                <div class="flex" id="top-bar-div">
+            <div class="margin-bottom w-100" >
+                <div class="flex app-title" id="top-bar-div" style="border-bottom-left-radius:15px; border-bottom-right-radius:15px;">
                     <div class="flex-1" id="app-title-div">
-                        <h1 class="app-title">
+                        <h1 >
                             @* <i class="fa-solid fa-people-simple"></i> *@
                             <img src="~/imageIcons/medium/images (3).png" alt="logo" style="height:50px; width:50px;" />
                             Contact Manager
@@ -47,11 +53,11 @@
 
 
                     <div class="flex-1 pr" id="search-box-div">
-                        <div class="navbar account-links">
+                        <div class="navbar account-links" style="display:flex; float:right; align-items:center;">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <ul>
-                                    <li>
+                                <ul class="m-0 p-0">
+                                    <li class="lighttext1" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
                                         <i class="fa-solid fa-user"></i>
                                         @User.Identity?.Name
                                     </li>
@@ -59,41 +65,41 @@
                                     {
                                         Console.WriteLine(User.IsInRole("User"));
                                         <li>
-                                         <a asp-controller="Home" asp-action="Index" asp-area="Admin">Admin Home</a>
+                                            <a asp-controller="Home" asp-action="Index" asp-area="Admin" class="lighttext1">Admin Home</a>
                                     </li>
                                     }
                                     <li>
-                                        <a asp-controller="Auth" asp-action="Logout">Logout</a>
+                                        <a asp-controller="Auth" asp-action="Logout" class="lighttext1">Logout</a>
                                     </li>
                                 </ul>
                             }
                             else
                             {
 
-                                <ul>
+                                <ul class="m-0 p-0">
                                     @if (ViewBag.CurrentUrl == "~/Auth/Register")
                                     {
                                         <li>
-                                            <a asp-controller="Auth" asp-action="Register" class="nav-active">Register</a>
+                                            <a asp-controller="Auth" asp-action="Register" class="nav-active lighttext">Register</a>
                                         </li>
                                     }
                                     else
                                     {
                                         <li>
-                                            <a asp-controller="Auth" asp-action="Register">Register</a>
+                                            <a asp-controller="Auth" asp-action="Register" class="lighttext">Register</a>
                                         </li>
                                     }
 
                                     @if (ViewBag.CurrentUrl == "~/Auth/Login")
                                     {
                                         <li>
-                                            <a asp-controller="Auth" asp-action="Login" class="nav-active">Login</a>
+                                            <a asp-controller="Auth" asp-action="Login" class="nav-active lighttext">Login</a>
                                         </li>
                                     }
                                     else
                                     {
                                         <li>
-                                            <a asp-controller="Auth" asp-action="Login">Login</a>
+                                            <a asp-controller="Auth" asp-action="Login" class="lighttext">Login</a>
                                         </li>
 
                                     }
@@ -109,7 +115,7 @@
 
             <div class="navbar mb">
 
-                <ul>
+                <ul style="padding-left:0px;">
                     <li>
                         @if (ViewBag.CurrentUrl == "~/Persons/Index")
                         {
@@ -118,6 +124,14 @@
                         else
                         {
                             <a asp-controller="Persons" asp-action="Index">Persons</a>
+                        }
+                        @if (ViewBag.CurrentUrl == "~/Movies/Index")
+                        {
+                            <a asp-controller="Movies" asp-action="Index" class="nav-active">Actors</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Movies" asp-action="Index">Actors</a>
                         }
 
                         @if (ViewBag.CurrentUrl == "~/Countries/UploadExcel")
@@ -147,18 +161,52 @@
         </div>
     </div>
 
-    <script src="~/js/jquery.js"></script>
-    <script src="~/js/plugins.js"></script>
+    <!-- JQuery min js -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
 
-    <script src="~/js/functions.js"></script>
-    <script src="~/js/site.js"></script>
+    <!-- Bootstrap js -->
+    <script src="~/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Data Table Plugin -->
-    <script src="~/js/components/bs-datatable.js"></script>
+    <!-- Ionicons js -->
+    <script src="~/plugins/ionicons/ionicons.js"></script>
 
+    <!-- Moment js -->
+    <script src="~/plugins/moment/moment.js"></script>
+@* 
+    <!-- P-scroll js -->
+    <script src="~/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/plugins/perfect-scrollbar/p-scroll.js"></script> *@
 
-    <!-- Bootstrap File Upload Plugin -->
-    <script src="~/js/components/bs-filestyle.js"></script>
+    <!-- Internal Data tables -->
+    <script src="~/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+    <script src="~/plugins/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+    <script src="~/plugins/datatable/js/jszip.min.js"></script>
+    <script src="~/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+    <script src="~/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+    <script src="~/plugins/datatable/js/buttons.html5.min.js"></script>
+    <script src="~/plugins/datatable/js/buttons.print.min.js"></script>
+    <script src="~/plugins/datatable/js/buttons.colVis.min.js"></script>
+    <script src="~/plugins/datatable/dataTables.responsive.min.js"></script>
+    <script src="~/plugins/datatable/responsive.bootstrap5.min.js"></script>
+    <script src="~/js/table-data.js"></script>
+
+    <!-- INTERNAL Select2 js -->
+    <script src="~/plugins/select2/js/select2.full.min.js"></script>
+
+    <!-- Sticky js -->
+    <script src="~/js/sticky.js"></script>
+
+    <!-- eva-icons js -->
+    <script src="~/js/eva-icons.min.js"></script>
+
+    <!-- Theme Color js -->
+    <script src="~/js/themecolor.js"></script>
+
+    <!-- custom js -->
+    <script src="~/js/custom.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

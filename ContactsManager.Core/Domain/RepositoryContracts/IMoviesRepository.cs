@@ -15,10 +15,18 @@ namespace ContactsManager.Core.Domain.RepositoryContracts
     public interface IMoviesRepository
     {
         /// <summary>
-        /// get the actors object to the data store
+        /// get all the actors object to the data store
         /// </summary>
         /// <param name="cancellationToken">CancellationToken cancellationToken</param>
-        /// <returns>Returns the Actors object</returns>
-        Task<IEnumerable<ActorsDto>> GetActors(CancellationToken cancellationToken);
+        /// <returns>Returns the list of Actors objects</returns>
+        Task<IEnumerable<ActorsDto>> GetAllActors(CancellationToken cancellationToken);
+
+
+        /// <summary>
+        /// get an the actors object to the data store
+        /// </summary>
+        /// <param name="cancellationToken">CancellationToken cancellationToken</param>
+        /// <returns>Returns the Actor object</returns>
+        Task<ActorsDto> GetActors(string id,CancellationToken cancellationToken);
     }
 }
