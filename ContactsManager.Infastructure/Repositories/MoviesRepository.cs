@@ -34,6 +34,12 @@ namespace ContactsManager.Infastructure.Repositories
         {
             return await dataRepository.GetSearchedActors(id, "dbo.GetSearchedActor", CustomHelpers.GetConnectionString(configuration, "SecondConnection"), cancellationToken);
         }
+
+        public async Task<bool> UpdateActorsDetails(string id, string FirstName, string FamilyName, DateTime? DoB, DateTime? DoD, string Gender, CancellationToken cancellationToken)
+        {
+            return await dataRepository.UpdateActorFieldsAsync(id, FirstName, FamilyName, DoB, DoD, Gender, "dbo.UPDATEFIELDS",
+                CustomHelpers.GetConnectionString(configuration, "SecondConnection"), cancellationToken);
+        }
     }
 
 }

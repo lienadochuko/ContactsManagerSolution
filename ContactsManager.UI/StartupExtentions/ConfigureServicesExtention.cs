@@ -40,6 +40,7 @@ namespace Contact_Manager
 			services.AddScoped<IDataRepository, DataRepository>();
 			services.AddScoped<IMoviesRepository, MoviesRepository>();
 			services.AddScoped<IMoviesGetterServices, MoviesGetterService>();
+			services.AddScoped<IMoviesUpdaterServices, MoviesUpdaterService>();
 
 
 			services.AddDbContext<ApplicationDbContext>

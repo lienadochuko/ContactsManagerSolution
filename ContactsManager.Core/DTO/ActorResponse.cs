@@ -10,13 +10,13 @@ namespace ContactsManager.Core.DTO
     /// </summary>
     public class ActorResponse
     {
-        public int ActorID { get; set; }
-        public string? FirstName { get; set; }
-        public string? FamilyName { get; set; }
-        public string? FullName { get; set; }
+        public string ActorID { get; set; }
+        public string FirstName { get; set; }
+        public string FamilyName { get; set; }
+        public string FullName { get; set; }
         public DateTime? DOB { get; set; }
         public DateTime? DOD { get; set; }
-        public string? Gender { get; set; }
+        public string Gender { get; set; }
         public double? Age { get; set; }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace ContactsManager.Core.DTO
         {
             return new ActorResponse
             {
-                ActorID = actors.ActorID,
+                ActorID = actors.ActorID.ToString(),
                 FirstName = actors.FirstName,
                 FamilyName = actors.FamilyName,
                 FullName = actors.FullName,

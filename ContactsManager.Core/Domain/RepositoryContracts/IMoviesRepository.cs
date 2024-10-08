@@ -28,5 +28,14 @@ namespace ContactsManager.Core.Domain.RepositoryContracts
         /// <param name="cancellationToken">CancellationToken cancellationToken</param>
         /// <returns>Returns the Actor object</returns>
         Task<ActorsDto> GetActors(string id,CancellationToken cancellationToken);
+
+
+        /// <summary>
+        /// update Actors Details
+        /// </summary>
+        /// <param name="cancellationToken">CancellationToken cancellationToken</param>
+        /// <returns>Update the Actor in the db</returns>
+        Task<bool> UpdateActorsDetails(string id, string FirstName, string FamilyName, DateTime? DoB, DateTime? DoD, string Gender,
+            CancellationToken cancellationToken);
     }
 }

@@ -11,7 +11,8 @@ namespace ContactsManager.Infastructure.Repositories.DataAccess
 	{
 		Task<IEnumerable<T>> GetListOfActors<T>(string procedureName, string ConnectionString, SqlParameter[] sqlParameter, Func<SqlDataReader, T> mapFunction, CancellationToken cancellationToken = default);
         Task<ActorsDto> GetSearchedActors(string id, string procedureName, string connectionString,CancellationToken cancellationToken = default);
-
+        Task<bool> UpdateActorFieldsAsync(string actorId, string firstName, string familyName, DateTime? dob, DateTime? dod, string gender,
+          string procedureName, string connectionString, CancellationToken cancellationToken = default);
 
     }
 
@@ -85,6 +86,46 @@ namespace ContactsManager.Infastructure.Repositories.DataAccess
             }
 
             return ActorDto;
+        }
+
+        public async Task<bool> UpdateActorFieldsAsync(string actorId, string firstName, string familyName, DateTime? dob, DateTime? dod, string gender,
+            string procedureName, string connectionString, CancellationToken cancellationToken = default)
+        {
+            bool isUpdated = false;
+
+            // Using ADO.NET connection and command
+            await using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await using (SqlCommand command = new SqlCommand(procedureName, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Adding parameters to the command
+                    command.Parameters.Add(new SqlParameter("@FirstName", SqlDbType.VarChar, 100) { Value = firstName });
+                    command.Parameters.Add(new SqlParameter("@FamilyName", SqlDbType.VarChar, 100) { Value = familyName });
+                    command.Parameters.Add(new SqlParameter("@DoB", SqlDbType.DateTime) { Value = dob });
+
+                    if (dod.HasValue)
+                    {
+                        command.Parameters.Add(new SqlParameter("@DoD", SqlDbType.DateTime) { Value = dod });
+                    }
+                    else
+                    {
+                        command.Parameters.Add(new SqlParameter("@DoD", SqlDbType.DateTime) { Value = DBNull.Value });
+                    }
+
+                    command.Parameters.Add(new SqlParameter("@Gender", SqlDbType.VarChar, 50) { Value = gender });
+                    command.Parameters.Add(new SqlParameter("@ActorId", SqlDbType.VarChar, 10) { Value = actorId });
+
+                    await connection.OpenAsync();
+
+                    // Execute the update command
+                    int rowsAffected = await command.ExecuteNonQueryAsync();
+                    isUpdated = rowsAffected > 0;
+                }
+            }
+
+            return isUpdated;
         }
     }
 }
