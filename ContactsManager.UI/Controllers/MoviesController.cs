@@ -15,7 +15,7 @@ namespace ContactsManager.UI.Controllers
 {
     [Route("[controller]")]
     [Authorize(Roles = "User, Admin, Developer")]
-    public class MoviesController(IMoviesGetterServices moviesGetterServices,
+    public class MoviesController(IMoviesGetterServices moviesGetterServices, IMoviesDeleterServices moviesDeleterServices,
         IMoviesUpdaterServices moviesUpdaterServices, ILogger<MoviesController> logger) : Controller
     {
         [Route("[action]")]
@@ -71,6 +71,34 @@ namespace ContactsManager.UI.Controllers
             }
         }
 
+
+
+        [HttpGet]
+        [Route("[action]/{actorsID}")] //Url: person/delete/1
+        public async Task<IActionResult> Delete(string actorsID, CancellationToken cancellationToken)
+        {
+            ActorResponse Actors = await moviesGetterServices.GetActorsByID(actorsID, cancellationToken);
+
+            if (Actors == null)
+            {
+                return RedirectToAction("Index", "Movies");
+            }
+            //_personServices.DeletePerson(personID);
+
+            return View(Actors);
+        }
+
+
+        [HttpPost]
+        [Route("[action]/{actorID}")]
+        public async Task<IActionResult> Delete(ActorResponse actorResponse, CancellationToken cancellationToken)
+        {
+            if (actorResponse == null)
+                return RedirectToAction("Index", "Movies");
+
+            await moviesDeleterServices.DeleteActors(actorResponse.ActorID, cancellationToken);
+            return RedirectToAction("Index", "Movies");
+        }
 
     }
 }

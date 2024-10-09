@@ -40,6 +40,12 @@ namespace ContactsManager.Infastructure.Repositories
             return await dataRepository.UpdateActorFieldsAsync(id, FirstName, FamilyName, DoB, DoD, Gender, "dbo.UPDATEFIELDS",
                 CustomHelpers.GetConnectionString(configuration, "SecondConnection"), cancellationToken);
         }
+
+        public async Task<bool> DeleteActor(string id, CancellationToken cancellationToken)
+        {
+            return await dataRepository.DeleteActorAsync(id, "dbo.DELETEFIELD",
+                CustomHelpers.GetConnectionString(configuration, "SecondConnection"), cancellationToken);
+        }
     }
 
 }

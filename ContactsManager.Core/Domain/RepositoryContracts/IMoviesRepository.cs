@@ -37,5 +37,14 @@ namespace ContactsManager.Core.Domain.RepositoryContracts
         /// <returns>Update the Actor in the db</returns>
         Task<bool> UpdateActorsDetails(string id, string FirstName, string FamilyName, DateTime? DoB, DateTime? DoD, string Gender,
             CancellationToken cancellationToken);
+
+
+        /// <summary>
+        /// Delete Actor using actor ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>returns true if actor was deleted, else false</returns>
+        Task<bool> DeleteActor(string id, CancellationToken cancellationToken);
     }
 }

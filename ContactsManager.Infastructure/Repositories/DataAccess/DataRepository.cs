@@ -13,6 +13,7 @@ namespace ContactsManager.Infastructure.Repositories.DataAccess
         Task<ActorsDto> GetSearchedActors(string id, string procedureName, string connectionString,CancellationToken cancellationToken = default);
         Task<bool> UpdateActorFieldsAsync(string actorId, string firstName, string familyName, DateTime? dob, DateTime? dod, string gender,
           string procedureName, string connectionString, CancellationToken cancellationToken = default);
+        Task<bool> DeleteActorAsync(string actorId, string procedureName, string connectionString, CancellationToken cancellationToken = default);
 
     }
 
@@ -115,6 +116,29 @@ namespace ContactsManager.Infastructure.Repositories.DataAccess
                     }
 
                     command.Parameters.Add(new SqlParameter("@Gender", SqlDbType.VarChar, 50) { Value = gender });
+                    command.Parameters.Add(new SqlParameter("@ActorId", SqlDbType.VarChar, 10) { Value = actorId });
+
+                    await connection.OpenAsync();
+
+                    // Execute the update command
+                    int rowsAffected = await command.ExecuteNonQueryAsync();
+                    isUpdated = rowsAffected > 0;
+                }
+            }
+
+            return isUpdated;
+        }
+
+        public async Task<bool> DeleteActorAsync(string actorId, string procedureName, string connectionString, CancellationToken cancellationToken = default)
+        {
+            bool isUpdated = false;
+
+            // Using ADO.NET connection and command
+            await using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                await using (SqlCommand command = new SqlCommand(procedureName, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.Add(new SqlParameter("@ActorId", SqlDbType.VarChar, 10) { Value = actorId });
 
                     await connection.OpenAsync();
