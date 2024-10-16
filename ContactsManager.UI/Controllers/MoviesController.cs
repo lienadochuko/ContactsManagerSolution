@@ -8,6 +8,8 @@ using ContactsManager.Infastructure.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MoviesApi.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -98,6 +100,26 @@ namespace ContactsManager.UI.Controllers
 
             await moviesDeleterServices.DeleteActors(actorResponse.ActorID, cancellationToken);
             return RedirectToAction("Index", "Movies");
+        }
+
+        [HttpGet]
+        [Route("Directors")]
+        public async Task<IActionResult> GetDirectorsFromApi(CancellationToken cancellationToken)
+        {
+            string apiUrl = "https://localhost:7291/api/Movies/GetDirectorsID";
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                response.EnsureSuccessStatusCode();
+
+                string responseData = await response.Content.ReadAsStringAsync();
+
+                // Deserialize JSON data into a list of Film objects
+                IEnumerable<DirectorDTO> directors = JsonConvert.DeserializeObject<IEnumerable<DirectorDTO>>(responseData);
+
+                return View(directors);
+            }
         }
 
     }
